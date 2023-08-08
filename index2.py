@@ -51,16 +51,7 @@ while j<len(alllogs):
         image=row.message[11:end+3]
         user=row.username
         date=row.date
-        if user==curimg:
-            imglist[len(imglist)-1]["images"]=imglist[len(imglist)-1]["images"]+","+image
-        else:
-            item={
-                "date":date,
-                "user":user,
-                "images":image
-            }
-            imglist.append(item)            
-        curimg=user
+        
         # print(date, user,image)
     else:
         if j!=0 and j%5==0:
