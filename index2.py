@@ -51,7 +51,16 @@ while j<len(alllogs):
         image=row.message[11:end+3]
         user=row.username
         date=row.date
-        
+        if user==curimg:
+            imglist[len(imglist)-1]["images"]=imglist[len(imglist)-1]["images"]+","+image
+        else:
+            item={
+                "date":date,
+                "user":user,
+                "images":image
+            }
+            imglist.append(item)            
+        curimg=user
         # print(date, user,image)
     else:
         if j!=0 and j%5==0:
@@ -75,25 +84,7 @@ while j<len(alllogs):
         amountflag=0
         pmethodflag=0
         techname=""
-        signflag={
-            "kind":"Quote",
-            "WorkOrder":0,
-            "Date":0,
-            "Dispatcher":0,
-            "Company":0,
-            "NTE":0,
-            "AmountDue":0,
-            "Techname":0,
-            "Technumber":0,
-            "Paymentmethod":0,
-            "Paymentaddress":0,
-            "Joblocation":0,
-            "Jobstatus":0,
-            "Overall":0,
-            "qDescription":0,
-            "qDetails":0,
-            "ToatalPrice":0,
-        }
+        
         #################################################     Dispatcher   ##########################################################   
         # print("Dispatcher", row.username)
         dispatcher=row.username
